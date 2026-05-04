@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "18b7fc505b1061b0d072",
+  "position": {
+    "x": 613.73860182370822,
+    "y": 48.632218844984806,
+    "z": 1000,
+    "height": 251.91489361702128,
+    "width": 621.51975683890578,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "HospitalDataSample"
+                    }
+                  },
+                  "Property": "Service"
+                }
+              },
+              "queryRef": "HospitalDataSample.Service",
+              "nativeQueryRef": "Service",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "HospitalDataSample"
+                        }
+                      },
+                      "Property": "ID_Sejour"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(HospitalDataSample.ID_Sejour)",
+              "nativeQueryRef": "ID_Sejour"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "HospitalDataSample"
+                      }
+                    },
+                    "Property": "ID_Sejour"
+                  }
+                },
+                "Function": 5
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "14b8781d4780277b3736",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "HospitalDataSample"
+              }
+            },
+            "Property": "Service"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b18cff74265c28083ddd",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "HospitalDataSample"
+                  }
+                },
+                "Property": "ID_Sejour"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

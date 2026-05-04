@@ -1,0 +1,21 @@
+model Model
+	culture: fr-CA
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: fr-CA
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["HospitalDataSample"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table HospitalDataSample
+ref table DateTableTemplate_e81578b1-fd79-4b97-ba37-ddf7e035b056
+ref table LocalDateTable_9193c28d-e383-4872-9d36-91958228cf63
+ref table LocalDateTable_b32e1b30-f898-4f66-9ad4-35a34c320e95
+
+ref cultureInfo fr-CA
+

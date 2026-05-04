@@ -1,0 +1,10 @@
+relationship fce37606-3234-46a5-9d4e-fcf1cc86c214
+	joinOnDateBehavior: datePartOnly
+	fromColumn: HospitalDataSample.Date_Admission
+	toColumn: LocalDateTable_9193c28d-e383-4872-9d36-91958228cf63.Date
+
+relationship be051a90-3231-4b0a-b68c-29456b7c9f3c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: HospitalDataSample.Date_Sortie
+	toColumn: LocalDateTable_b32e1b30-f898-4f66-9ad4-35a34c320e95.Date
+

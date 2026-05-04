@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "129d2b706004b4d205be",
+  "position": {
+    "x": 614,
+    "y": 360,
+    "z": 3000,
+    "height": 252,
+    "width": 622,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "HospitalDataSample"
+                    }
+                  },
+                  "Property": "Service"
+                }
+              },
+              "queryRef": "HospitalDataSample.Service",
+              "nativeQueryRef": "Service",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "HospitalDataSample"
+                        }
+                      },
+                      "Property": "Duree_Sejour_Jours"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(HospitalDataSample.Duree_Sejour_Jours)",
+              "nativeQueryRef": "Moyenne de Duree_Sejour_Jours"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "HospitalDataSample"
+                      }
+                    },
+                    "Property": "Duree_Sejour_Jours"
+                  }
+                },
+                "Function": 1
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

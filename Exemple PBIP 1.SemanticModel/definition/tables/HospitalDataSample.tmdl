@@ -1,0 +1,172 @@
+table HospitalDataSample
+	lineageTag: 770fb1e0-3937-430b-a06c-42e086cfcdd6
+
+	column ID_Sejour
+		dataType: string
+		lineageTag: aa15b2bc-cdea-4d1d-922a-0aed359a574b
+		summarizeBy: none
+		sourceColumn: ID_Sejour
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Admission
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a8051ad0-5007-4024-8181-37d5f8e5b606
+		summarizeBy: none
+		sourceColumn: Date_Admission
+
+		variation Variation
+			isDefault
+			relationship: fce37606-3234-46a5-9d4e-fcf1cc86c214
+			defaultHierarchy: LocalDateTable_9193c28d-e383-4872-9d36-91958228cf63.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Date_Sortie
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c139457e-8753-4958-83b8-d02cf5d187e8
+		summarizeBy: none
+		sourceColumn: Date_Sortie
+
+		variation Variation
+			isDefault
+			relationship: be051a90-3231-4b0a-b68c-29456b7c9f3c
+			defaultHierarchy: LocalDateTable_b32e1b30-f898-4f66-9ad4-35a34c320e95.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Service
+		dataType: string
+		lineageTag: 6a3e981d-c9bf-48e0-a0d3-b4cd63bea332
+		summarizeBy: none
+		sourceColumn: Service
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type_Admission
+		dataType: string
+		lineageTag: 3af05b34-96ef-4202-9a77-eff5ddeb5bf7
+		summarizeBy: none
+		sourceColumn: Type_Admission
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: 54df99ba-7176-4043-8f4b-714d2df9bc54
+		summarizeBy: sum
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sexe
+		dataType: string
+		lineageTag: e6c3c2fa-633f-458c-86b9-b70b3d162ea0
+		summarizeBy: none
+		sourceColumn: Sexe
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ville
+		dataType: string
+		lineageTag: 98eec957-4d71-4986-8c2c-b27290cd0928
+		summarizeBy: none
+		sourceColumn: Ville
+
+		annotation SummarizationSetBy = Automatic
+
+	column Medecin
+		dataType: string
+		lineageTag: 84972615-bce6-4e23-95b7-27641a9005ce
+		summarizeBy: none
+		sourceColumn: Medecin
+
+		annotation SummarizationSetBy = Automatic
+
+	column Diagnostic_Groupe
+		dataType: string
+		lineageTag: fc0e39b1-de73-43a2-b788-084e93ffcf65
+		summarizeBy: none
+		sourceColumn: Diagnostic_Groupe
+
+		annotation SummarizationSetBy = Automatic
+
+	column Acte_Principal
+		dataType: string
+		lineageTag: a22d8c32-40b3-40ff-b13c-89de9b4aa9fc
+		summarizeBy: none
+		sourceColumn: Acte_Principal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Chambre
+		dataType: string
+		lineageTag: 3d6e6108-3eb3-489f-9e67-ae67443b62f1
+		summarizeBy: none
+		sourceColumn: Chambre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Duree_Sejour_Jours
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c2aaa0d-eb95-40e0-bc4c-b63a40eca5e4
+		summarizeBy: sum
+		sourceColumn: Duree_Sejour_Jours
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cout_Total
+		dataType: int64
+		formatString: 0
+		lineageTag: a5bcf15f-4d73-48c1-a80e-3185162f56c1
+		summarizeBy: sum
+		sourceColumn: Cout_Total
+
+		annotation SummarizationSetBy = Automatic
+
+	column Assurance
+		dataType: string
+		lineageTag: 6b101d2a-6b48-4d49-a772-b8f46dc77974
+		summarizeBy: none
+		sourceColumn: Assurance
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mode_Sortie
+		dataType: string
+		lineageTag: 80e1e5b2-ade2-4d67-9e81-0e1db65f5568
+		summarizeBy: none
+		sourceColumn: Mode_Sortie
+
+		annotation SummarizationSetBy = Automatic
+
+	column Satisfaction
+		dataType: int64
+		formatString: 0
+		lineageTag: 9082e421-14bb-421c-8a0c-29fc3eafc012
+		summarizeBy: sum
+		sourceColumn: Satisfaction
+
+		annotation SummarizationSetBy = Automatic
+
+	partition HospitalDataSample = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\MahdiBelhadj\OneDrive - Alithya\Documents\Académie\Power BI examples\PBIT\dataset.xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"En-têtes promus" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"ID_Sejour", type text}, {"Date_Admission", type date}, {"Date_Sortie", type date}, {"Service", type text}, {"Type_Admission", type text}, {"Age", Int64.Type}, {"Sexe", type text}, {"Ville", type text}, {"Medecin", type text}, {"Diagnostic_Groupe", type text}, {"Acte_Principal", type text}, {"Chambre", type text}, {"Duree_Sejour_Jours", Int64.Type}, {"Cout_Total", Int64.Type}, {"Assurance", type text}, {"Mode_Sortie", type text}, {"Satisfaction", Int64.Type}})
+				in
+				    #"Type modifié"
+
+	annotation PBI_ResultType = Table
+

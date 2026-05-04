@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "131b97d4a080a601067d",
+  "position": {
+    "x": 15.562310030395137,
+    "y": 359.87841945288756,
+    "z": 2000,
+    "height": 251.91489361702128,
+    "width": 570.94224924012155,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "HospitalDataSample"
+                    }
+                  },
+                  "Property": "Medecin"
+                }
+              },
+              "queryRef": "HospitalDataSample.Medecin",
+              "nativeQueryRef": "Medecin",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "HospitalDataSample"
+                        }
+                      },
+                      "Property": "Cout_Total"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(HospitalDataSample.Cout_Total)",
+              "nativeQueryRef": "Somme de Cout_Total"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "HospitalDataSample"
+                      }
+                    },
+                    "Property": "Cout_Total"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

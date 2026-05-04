@@ -1,0 +1,140 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "704ff5f325b00140c51c",
+  "position": {
+    "x": 15.562310030395137,
+    "y": 48.632218844984806,
+    "z": 0,
+    "height": 251.91489361702128,
+    "width": 570.94224924012155,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "HospitalDataSample"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Date_Admission"
+                        }
+                      },
+                      "Hierarchy": "Hiérarchie de dates"
+                    }
+                  },
+                  "Level": "Année"
+                }
+              },
+              "queryRef": "HospitalDataSample.Date_Admission.Variation.Hiérarchie de dates.Année",
+              "nativeQueryRef": "Date_Admission Année",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "HospitalDataSample"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Date_Admission"
+                        }
+                      },
+                      "Hierarchy": "Hiérarchie de dates"
+                    }
+                  },
+                  "Level": "Mois"
+                }
+              },
+              "queryRef": "HospitalDataSample.Date_Admission.Variation.Hiérarchie de dates.Mois",
+              "nativeQueryRef": "Date_Admission Mois",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "HospitalDataSample"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Date_Admission"
+                        }
+                      },
+                      "Hierarchy": "Hiérarchie de dates"
+                    }
+                  },
+                  "Level": "Jour"
+                }
+              },
+              "queryRef": "HospitalDataSample.Date_Admission.Variation.Hiérarchie de dates.Jour",
+              "nativeQueryRef": "Date_Admission Jour",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "HospitalDataSample"
+                        }
+                      },
+                      "Property": "ID_Sejour"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(HospitalDataSample.ID_Sejour)",
+              "nativeQueryRef": "Nombre de ID_Sejour"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "valueAxis": [
+        {
+          "properties": {
+            "start": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
