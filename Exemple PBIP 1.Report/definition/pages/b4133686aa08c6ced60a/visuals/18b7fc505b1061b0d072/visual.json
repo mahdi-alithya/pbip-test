@@ -23,11 +23,11 @@
                       "Entity": "HospitalDataSample"
                     }
                   },
-                  "Property": "Medecin"
+                  "Property": "Service"
                 }
               },
               "queryRef": "HospitalDataSample.Service",
-              "nativeQueryRef": "Medecin",
+              "nativeQueryRef": "Service",
               "active": true
             }
           ]
